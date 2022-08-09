@@ -12,6 +12,8 @@
       href="./images/favicon-32x32.png"
     />
 
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <title>Frontend Mentor | Tip calculator app</title>
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -34,7 +36,7 @@
         <div class="input-container">
           <div class="bill-box">
             <p>Bill</p>
-            <input type="text" value="0" />
+            <input type="text" value="0" id="input-bill" required />
           </div>
 
           <div class="tip-box">
@@ -56,25 +58,30 @@
                 <button class="tip" value="50">50%</button>
               </li>
               <li>
-                <button>Custom</button>
+                <input
+                  type="text"
+                  id="input-tipcustom"
+                  value="Custom"
+                  required
+                />
               </li>
             </ul>
           </div>
           <div class="people-box">
             <p>Number of People</p>
-            <input type="number" class="people-value" value="0" />
+            <input type="text" id="input-people" value="0" required />
           </div>
         </div>
 
         <div class="result-container">
           <div class="tipamount-box">
             <p>Tip Amount<span>/ person</span></p>
-            <div class="tipamount-value">0.00</div>
+            <div id="tipamount-value">$ 0.00</div>
           </div>
 
           <div class="total-box">
             <p>Total<span>/ person</span></p>
-            <div class="total-value">0.00</div>
+            <div id="total-value">$ 0.00</div>
           </div>
 
           <button class="reset-btn" type="submit">Reset</button>
