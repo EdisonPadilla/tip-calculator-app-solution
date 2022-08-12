@@ -1,0 +1,168 @@
+:root {
+  /* ## Colors */
+
+  /* ### Primary */
+
+  --strong-cyan: hsl(172, 67%, 45%);
+
+  /* ### Neutral */
+
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --grayish-cyan: hsl(184, 14%, 56%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --very-light-grayish-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+}
+
+body input {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.container {
+  font-weight: 700;
+  background-color: var(--light-grayish-cyan);
+}
+
+header {
+  margin-bottom: 24px;
+  padding-top: 48px;
+  text-align: center;
+}
+
+main {
+  /* padding: 24px; */
+  padding-bottom: 24px;
+  background-color: var(--white);
+  border-radius: 18px 18px 0 0;
+}
+
+main .input-label {
+  /* margin-top: 0; */
+  color: var(--dark-grayish-cyan);
+}
+
+main .input {
+  padding-right: 10px;
+  width: 100%;
+  text-align: right;
+  color: var(--very-dark-cyan);
+  border: none;
+  border-radius: 4px;
+  background-color: var(--very-light-grayish-cyan);
+}
+
+main .input:focus {
+  outline: 2px solid var(--strong-cyan);
+}
+
+.input-container {
+  margin: 0 auto 32px auto;
+  padding-top: 8px;
+  /* padding: 8px 24px 0 24px; */
+  width: 88%;
+}
+
+.input-container .bill-box,
+.input-container .tip-box
+/*.input-container .people-box*/ {
+  margin-bottom: 32px;
+}
+
+.input-container .input-box {
+  position: relative;
+}
+
+.input-box .icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* .bill-box .input::placeholder {
+  color: var(--grayish-cyan);
+} */
+
+.tip-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: stretch;
+  gap: 10px;
+}
+
+.tip-options .tip {
+  width: 100%;
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  background-color: var(--very-dark-cyan);
+}
+
+.tip-options .input {
+  color: var(--dark-grayish-cyan);
+}
+
+.results-container {
+  margin: 0 auto;
+  padding: 24px;
+  width: 92%;
+  color: var(--white);
+  border-radius: 18px;
+  background-color: var(--very-dark-cyan);
+}
+
+.results-container .result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-box {
+  /* font-size: 24px; */
+  font-weight: 700;
+}
+
+.label-box span {
+  font-weight: lighter;
+  color: var(--grayish-cyan);
+}
+
+#tipamount-value,
+#total-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--strong-cyan);
+}
+
+.results-container .reset-btn {
+  margin-top: 40px;
+  padding: 6px 0;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--very-dark-cyan);
+  text-transform: uppercase;
+  background-color: var(--strong-cyan);
+  border-radius: 4px;
+}

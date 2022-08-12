@@ -12,7 +12,19 @@
       href="./images/favicon-32x32.png"
     />
 
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- resetear los estilos para todos los navegadores -->
+    <link rel="stylesheet" href="./css/normalize.css" />
+
+    <!-- Mi hoja de estilos -->
+    <link rel="stylesheet" href="./css/tip_calculator_style.css" />
 
     <title>Frontend Mentor | Tip calculator app</title>
 
@@ -35,52 +47,73 @@
       <main>
         <div class="input-container">
           <div class="bill-box">
-            <p>Bill</p>
-            <input type="text" value="0" id="input-bill" required />
+            <p class="input-label">Bill</p>
+            <div class="input-box">
+              <input
+                type="text"
+                value="0"
+                id="input-bill"
+                class="input"
+                required
+              />
+              <img
+                class="icon dollar-icon"
+                src="./images/icon-dollar.svg"
+                alt="person"
+              />
+            </div>
           </div>
 
           <div class="tip-box">
-            <p>Select Tip %</p>
-            <ul class="tip-options">
-              <li>
-                <button class="tip" value="5">5%</button>
-              </li>
-              <li>
-                <button class="tip" value="10">10%</button>
-              </li>
-              <li>
-                <button class="tip" value="15">15%</button>
-              </li>
-              <li>
-                <button class="tip" value="25">25%</button>
-              </li>
-              <li>
-                <button class="tip" value="50">50%</button>
-              </li>
-              <li>
-                <input
-                  type="text"
-                  id="input-tipcustom"
-                  value="Custom"
-                  required
-                />
-              </li>
-            </ul>
+            <p class="input-label">Select Tip %</p>
+            <div class="tip-options">
+              <button class="tip" value="5">5%</button>
+              <button class="tip" value="10">10%</button>
+              <button class="tip" value="15">15%</button>
+              <button class="tip" value="25">25%</button>
+              <button class="tip" value="50">50%</button>
+              <input
+                type="text"
+                id="input-tipcustom"
+                class="input"
+                .
+                value="Custom"
+                required
+              />
+            </div>
           </div>
+
           <div class="people-box">
-            <p>Number of People</p>
-            <input type="text" id="input-people" value="0" required />
+            <p class="input-label">Number of People</p>
+            <div class="input-box">
+              <input
+                type="text"
+                id="input-people"
+                class="input"
+                value="0"
+                required
+              />
+              <img class="icon" src="./images/icon-person.svg" alt="" />
+            </div>
           </div>
         </div>
 
-        <div class="result-container">
-          <div class="tipamount-box">
-            <p>Tip Amount<span>/ person</span></p>
+        <div class="results-container">
+          <div class="result tipamount-box">
+            <p class="label-box">
+              Tip Amount
+              <br />
+              <span>/ person</span>
+            </p>
             <div id="tipamount-value">$ 0.00</div>
           </div>
 
-          <div class="total-box">
-            <p>Total<span>/ person</span></p>
+          <div class="result total-box">
+            <p class="label-box">
+              Total
+              <br />
+              <span>/ person</span>
+            </p>
             <div id="total-value">$ 0.00</div>
           </div>
 
@@ -89,9 +122,9 @@
       </main>
     </div>
 
-    <figure>
+    <!-- <figure>
       <img src="./algoritmo/solution-al.svg" alt="" />
-    </figure>
+    </figure> -->
 
     <div class="attribution">
       Challenge by

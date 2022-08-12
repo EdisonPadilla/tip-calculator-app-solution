@@ -103,9 +103,13 @@ function validToCalculate() {
 
   if (emptyValues) {
     console.warn("uno esta vacío");
+    $tipamount_value.textContent = `$ 0.00`;
+    $total_value.textContent = `$ 0.00`;
   } else {
     console.warn("Todos ingresados");
     if (zerosValues) {
+      $tipamount_value.textContent = `$ 0.00`;
+      $total_value.textContent = `$ 0.00`;
       for (const key in inputValuesObj) {
         if (inputValuesObj[key] === "0") {
           console.log("No puede ser 0: ", key);
