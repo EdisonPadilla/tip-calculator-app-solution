@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [solution repository](https://github.com/EdisonPadilla/tip-calculator-app-solution)
-- Live Site URL: [live site](https://your-live-site-url.com)
+- Live Site URL: [live site](https://edisonpadilla.github.io/tip-calculator-app-solution/)
 
 ## My process
 
