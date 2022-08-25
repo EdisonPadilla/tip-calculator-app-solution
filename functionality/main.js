@@ -15,20 +15,13 @@ let validValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 const d = document;
 const $input_bill = d.getElementById("input-bill");
+const $messages_active = d.querySelectorAll(".message-active-state");
 const $tip_options = d.querySelectorAll(".tip-options .tip");
 const $input_custom = d.getElementById("input-tipcustom");
 const $input_people = d.getElementById("input-people");
 const $tipamount_value = d.getElementById("tipamount-value");
 const $total_value = d.getElementById("total-value");
 const $reset_button = d.querySelector(".reset-btn");
-
-// console.log($input_bill);
-// console.log($tip_options);
-// console.log($input_custom);
-// console.log($input_people);
-// console.log($tipamount_value);
-// console.log($total_value);
-// console.log($reset_button);
 
 function renderizarResultado() {
   $tipamount_value.textContent = `$ ${tipAmount.toFixed(2)}`;
@@ -95,28 +88,39 @@ function calcular() {
 
 function validToCalculate() {
   let arrayInputValues = Object.values(inputValuesObj);
-  let emptyValues = arrayInputValues.some(
-    (value) => value === "" || value === "Custom"
-  );
 
-  let zerosValues = arrayInputValues.some((value) => value === "0");
-
-  if (emptyValues) {
-    console.warn("uno esta vacío");
+  if (arrayInputValues.includes("") || arrayInputValues.includes("Custom")) {
+    console.warn("alguno/s esta vacío");
     $tipamount_value.textContent = `$ 0.00`;
     $total_value.textContent = `$ 0.00`;
+    arrayInputValues.forEach((value, index) => {
+      if (value === "" || value == "Custom") {
+        // console.log($messages_active[index].textContent);
+        $messages_active[index].textContent = `Can't be empty`;
+      } else {
+        $messages_active[index].textContent = "";
+      }
+    });
   } else {
     console.warn("Todos ingresados");
-    if (zerosValues) {
+    if (arrayInputValues.includes("0")) {
+      console.warn("alguno/s es cero");
       $tipamount_value.textContent = `$ 0.00`;
       $total_value.textContent = `$ 0.00`;
-      for (const key in inputValuesObj) {
-        if (inputValuesObj[key] === "0") {
-          console.log("No puede ser 0: ", key);
+
+      arrayInputValues.forEach((value, index) => {
+        if (value === "0") {
+          // console.log($messages_active[index].textContent);
+          $messages_active[index].textContent = `Can't be zero`;
+        } else {
+          $messages_active[index].textContent = "";
         }
-      }
+      });
     } else {
       console.info("Valores Válidos");
+      arrayInputValues.forEach((value, index) => {
+        $messages_active[index].textContent = "";
+      });
       calcular();
       renderizarResultado();
     }
@@ -127,6 +131,9 @@ function resetear() {
   tip = 0;
   tipAmount = 0;
   total = 0;
+  inputBill.length = 0;
+  inputCustom.length = 0;
+  inputPeople.length = 0;
   inputValuesObj.bill = "0";
   inputValuesObj.tip = "Custom";
   inputValuesObj.people = "0";
@@ -182,23 +189,33 @@ $input_people.addEventListener("keydown", (e) => {
 
 $tip_options.forEach((option) => {
   option.addEventListener("click", (e) => {
-    console.log(option.value);
+    // styles for active states
+    Array.from($tip_options).map((btn) => btn.classList.remove("selected"));
+    $input_custom.classList.remove("selected-custom");
+    option.classList.add("selected");
+    // to work with the tip value
     tip = option.value;
     inputValuesObj.tip = tip;
     console.info("valores ingresados: ", Object.values(inputValuesObj));
+    $input_custom.value = "Custom";
+    inputCustom.length = 0;
     validToCalculate();
   });
 });
 
+$input_custom.addEventListener("click", () => {
+  Array.from($tip_options).map((btn) => btn.classList.remove("selected"));
+  $input_custom.classList.add("selected-custom");
+});
+
 $reset_button.addEventListener("click", () => {
   resetear();
+  Array.from($tip_options).map((btn) => btn.classList.remove("selected"));
+  $input_custom.classList.remove("selected-custom");
 });
 
 $input_bill.value = inputValuesObj.bill;
 $input_custom.value = inputValuesObj.tip;
 $input_people.value = inputValuesObj.people;
 
-console.log("Monto: ", parseFloat($input_bill.value));
-console.log("People: ", +$input_people.value);
-console.log("Tip: ", tip);
 console.log("Valores Ingresados: ", Object.values(inputValuesObj));
